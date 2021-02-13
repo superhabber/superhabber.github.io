@@ -1,11 +1,4 @@
 (function () {
-
-    var x = document.createElement('script');
-    x.src = 'https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js';
-    document.getElementsByTagName("head")[0].appendChild(x).then(() => {
-        console.log("got it")
-    });
-
     if (annyang) {
 
         var commands = {
