@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
             * {
   box-sizing: border-box;
 }
@@ -27,17 +27,50 @@ button {
   color: #fff;
 }
         </style>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+    <script>
+          var commands = {
+            // annyang will capture anything after a splat (*) and pass it to the function.
+            // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
+            'show me *tag': showFlickr,
+          
+            // A named variable is a one word variable, that can fit anywhere in your command.
+            // e.g. saying "calculate October stats" will call calculateStats('October');
+            'calculate :month stats': calculateStats,
+          
+            // By defining a part of the following command as optional, annyang will respond to both:
+            // "say hello to my little friend" as well as "say hello friend"
+            'say hello (to my little) friend': greeting
+          };
+          
+          var showFlickr = function(tag) {
+            console.log(tag)
+          }
+          
+          var calculateStats = function(month) {
+            console.log(2)
+          }
+          
+          var greeting = function() {
+            console.log(3)
+          }
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-        
-    </head>
-    <body>   
-      <div>
-        <a href="/">LOGIN</a>
-        <a href="/">REGISTER</a>
-        <a href="/">ALERT</a>
-      </div>
-<script src="./speech-control.js"></script>
+          // Add our commands to annyang
+    annyang.addCommands(commands);
 
-    </body>
+// Start listening. You can call this here, or attach this call to an event, button, etc.
+annyang.start();
+          
+          </script>
+  </head>
+  <body>
+    <div>
+      <a href="/">LOGIN</a>
+      <a href="/">REGISTER</a>
+      <a href="/">ALERT</a>
+    </div>
+    <script src="./speech-control.js"></script>
+
+  </body>
 </html>
