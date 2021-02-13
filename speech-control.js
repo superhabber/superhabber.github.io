@@ -1,26 +1,18 @@
-(function () {
 
-    fetchInject([
-        'https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js'
-    ]).then(() => {
-        if (annyang) {
+if (annyang) {
 
-            var commands = {
+    var commands = {
+        'hello': () => {console.log('hello')},
+        'site click *tag':click
+    };
 
-                'show me *tag': showFlickr
-            };
+    var click = function (tag) {
+        console.log(tag);
+    }
 
-            var showFlickr = function (tag) {
-                var url = 'http://api.flickr.com/services/rest/?tags=' + tag;
-                $.getJSON(url);
-            }
+    // Add our commands to annyang
+    annyang.addCommands(commands);
 
-            // Add our commands to annyang
-            annyang.addCommands(commands);
-
-            // Start listening. You can call this here, or attach this call to an event, button, etc.
-            annyang.start();
-        }
-    })
-
-})
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
+}
