@@ -36,36 +36,8 @@ button {
         <a href="/">ALERT</a>
       </div>
 
-
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-<script>
-if (annyang) {
-  var commands = {
-
-  'show me *tag': showFlickr
-};
-
-var showFlickr = function(tag) {
-  var url = 'http://api.flickr.com/services/rest/?tags='+tag;
-  $.getJSON(url);
-}
-
-var calculateStats = function(month) {
-  $('#stats').text('Statistics for '+month);
-}
-
-var greeting = function() {
-  $('#greeting').text('Hello!');
-}
-
-  // Add our commands to annyang
-  annyang.addCommands(commands);
-
-  // Start listening. You can call this here, or attach this call to an event, button, etc.
-  annyang.start();
-}
-</script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> -->
+      <script src="./speech-control.js"></script>
 
     </body>
 </html>
