@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+textarea, input {
+  width: 100%;
+  padding: .5rem;
+  font-size: 1rem;
+}
+textarea {
+  height: 5rem;
+}
+button {
+  padding: .5rem 1rem;
+  background-color: #008cba;
+  font-size: 1rem;
+  color: #fff;
+}
+        </style>
+    </head>
+    <body>
+        <p>Нажмите на «начать запись» и говорите. Текст появится в поле ниже:</p>
+        <p>
+            <input id="interim" placeholder="Прогресс распознавания">
+        </p>
+        <p>
+            <textarea id="message" placeholder="Окончательный результат"></textarea>
+        </p>
+        <button id="recognize">Начать запись</button>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'hello': function() {
+      alert(0);
+    }
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+</script>
+
+    </body>
+</html>
