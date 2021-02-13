@@ -29,24 +29,35 @@ button {
         </style>
     </head>
     <body>
-        <p>Нажмите на «начать запись» и говорите. Текст появится в поле ниже:</p>
-        <p>
-            <input id="interim" placeholder="Прогресс распознавания">
-        </p>
-        <p>
-            <textarea id="message" placeholder="Окончательный результат"></textarea>
-        </p>
-        <button id="recognize">Начать запись</button>
+        
+      <div>
+        <a href="/">LOGIN</a>
+        <a href="/">REGISTER</a>
+        <a href="/">ALERT</a>
+      </div>
+
+
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
 <script>
 if (annyang) {
-  // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
-    'hello': function() {
-      alert(0);
-    }
-  };
+
+  'show me *tag': showFlickr
+};
+
+var showFlickr = function(tag) {
+  var url = 'http://api.flickr.com/services/rest/?tags='+tag;
+  $.getJSON(url);
+}
+
+var calculateStats = function(month) {
+  $('#stats').text('Statistics for '+month);
+}
+
+var greeting = function() {
+  $('#greeting').text('Hello!');
+}
 
   // Add our commands to annyang
   annyang.addCommands(commands);
